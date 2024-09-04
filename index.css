@@ -1,0 +1,69 @@
+body {
+    font-family: Arial, sans-serif;
+    background-image: url('/assets/Beef-Stew-Ugali.jpg');
+    background-position: center;
+    background-size: cover;
+}
+
+.content {
+    width: 50%;
+    margin: 0px auto;
+    padding: 20px;
+    border: 1px solid white;
+    border-radius: 10px;
+    box-shadow: 0 0 20px black;
+    color: white;
+    transition-duration: 0.5s;
+    backdrop-filter: blur(5px);
+}
+
+.content:hover{
+    background-color: white;
+    color: black;
+    transition-duration: 0.5s;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: black;
+}
+
+form {
+    margin: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+input[type="text"], input[type="email"], input[type="password"] {
+    width: 80%;
+    height: 30px;
+    display: flex;
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 1px solid grey;
+    border-radius: 5px;
+    background: none;
+}
+
+button[type="submit"] {
+    width: 30%;
+    height: 40px;
+    background-color: rgb(83, 207, 83);
+    color: #fff;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition-duration: 0.5s;
+}
+
+button[type="submit"]:hover {
+    background-color: darkgreen;
+    transition-duration: 0.5s;
+    transform: scale(1.1);
+    box-shadow: 0 0 10px black;
+}
