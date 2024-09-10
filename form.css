@@ -3,15 +3,16 @@ body {
     background-image: url('/assets/Beef-Stew-Ugali.jpg');
     background-position: center;
     background-size: cover;
+    height: 100%;
 }
 
 .content {
-    width: 50%;
-    margin: 0px auto;
+    width: 40%;
+    margin: 50px auto;
     padding: 20px;
     border: 1px solid white;
     border-radius: 10px;
-    box-shadow: 0 0 20px black;
+    box-shadow: 0 0 40px black;
     color: white;
     transition-duration: 0.5s;
     backdrop-filter: blur(5px);
@@ -22,6 +23,9 @@ body {
     color: black;
     transition-duration: 0.5s;
 }
+.content:hover > h1 {
+    color: black;
+  }
 
 h1 {
     text-align: center;
@@ -67,3 +71,95 @@ button[type="submit"]:hover {
     transform: scale(1.1);
     box-shadow: 0 0 10px black;
 }
+
+/* Header Styles */
+
+header {
+    height: 20%;
+    background-color: #3E8E41; /* Dark green background */
+    padding: 40px; /* Add some padding to the header */
+    display: flex; /* Use flexbox to align the logo and nav */
+    justify-content: space-between; /* Space the logo and nav apart */
+    align-items: center; /* Vertically center the logo and nav */
+  }
+  
+  .logo {
+    margin-right: 20px; /* Add some space between the logo and nav */
+  }
+  
+  .logo img {
+    width: 50px; /* Set the logo image width */
+    height: 50px; /* Set the logo image height */
+    border-radius: 50%; /* Make the logo image a circle */
+  }
+  
+  nav ul {
+    list-style: none; /* Remove bullet points from the nav list */
+    margin: 0; /* Remove margin from the nav list */
+    padding: 0; /* Remove padding from the nav list */
+    display: flex; /* Use flexbox to align the nav items */
+    justify-content: space-between; /* Space the nav items apart */
+  }
+  
+  nav li {
+    margin-right: 20px; /* Add some space between the nav items */
+  }
+  
+  nav a {
+    color: #FFFFFF; /* White text color for the nav links */
+    text-decoration: none; /* Remove underline from the nav links */
+  }
+  
+  nav a:hover {
+    color: #CCCCCC; /* Light gray text color on hover */
+  }
+  
+  h1 {
+    color: #FFFFFF; /* White text color for the header title */
+    font-size: 24px; /* Set the font size for the header title */
+    margin-bottom: 10px; /* Add some space between the title and nav */
+  }
+  
+  /* Footer Styles */
+  
+  footer {
+    background-color: #f0f0f0; /* Add a background color to the footer */
+    padding: 20px; /* Add some padding to the footer */
+    text-align: center; /* Center the text in the footer */
+  }
+  
+  .footertext {
+    display: inline-block; /* Make the text container an inline block */
+    vertical-align: top; /* Vertically align the text container to the top */
+  }
+  
+  .footertext p {
+    margin-bottom: 10px; /* Add some space between the paragraphs */
+  }
+  
+  .footertext ul {
+    list-style: none; /* Remove bullet points from the list */
+    margin: 0; /* Remove margin from the list */
+    padding: 0; /* Remove padding from the list */
+  }
+  
+  .footertext li {
+    display: inline-block;
+    margin-right: 10px; 
+  }
+  
+  .footertext a {
+    text-decoration: none; /* Remove underline from the links */
+    color: #333; /* Set the link color */
+  }
+  
+  .footertext a:hover {
+    color: #666; /* Set the hover link color */
+  }
+  
+  .footertext img {
+    width: 20px; 
+    height: 20px; 
+    margin-right: 10px; /* Add some space between the images and text */
+    vertical-align: middle; /* Vertically align the images with the text */
+  }
