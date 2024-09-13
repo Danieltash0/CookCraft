@@ -85,7 +85,7 @@ button[type="submit"]:hover {
 .pagename h1{
   font-size: 40px;
   font-style:italic;
-  font-family: pacifico, cursive;
+  font-family:'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
 /* The Header Part */
