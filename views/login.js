@@ -6,7 +6,7 @@ module.exports = `
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign Up Form</title>
-    <link rel="stylesheet" href="/styles/signup.css">
+    <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
     <header>
@@ -29,26 +29,20 @@ module.exports = `
     </header>
 
     <div class="pagename">
-        <h1>Register and Create Your Own Recipes</h1>
+        <h1>Add another recipe to your collection</h1>
     </div>
 
     <div class="content">
-        <h1>Create a CookCraft Account</h1>
-        <form id="signup-form" action="/signup" method="POST">
-            <label for="username">Create Username:</label>
-            <input type="text" id="username" name="username" required>
-        
+        <h1>Welcome Back!</h1>
+        <form id="signup-form" action="/login" method="POST">
             <label for="email">Email:</label>
             <input type="email" id="email" name="email" required>
 
             <label for="password">Password:</label>
             <input type="password" id="password" name="password" required>
 
-            <label for="confirm-password">Confirm Password:</label>
-            <input type="password" id="confirm-password" name="confirm-password" required>
-            
-            <button type="submit">Sign Up</button>
-            <p>Already have an account with us? <a href="/login">Login</a></p>
+            <button type="submit">Login</button>
+            <p>Don't have a CookCraft account yet? <a href="/signup">Sign Up Here</a></p>
         </form>
     </div>
 

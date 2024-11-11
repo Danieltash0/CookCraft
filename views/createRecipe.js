@@ -1,4 +1,3 @@
-// createRecipe.js
 module.exports = `
 <!DOCTYPE html>
 <html lang="en">

@@ -1,6 +1,7 @@
+
+module.exports = `
 <!DOCTYPE html>
 <html lang="en">
-    <!--Inner CSS and JS were used here-->
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -41,23 +42,22 @@
     </table>
 
     <script>
-        // Fetch the recipes from the server and populate the table
         fetch('/recipes')
             .then(response => response.json())
             .then(data => {
                 const tableBody = document.querySelector('#recipeTable tbody');
                 data.forEach(recipe => {
                     const row = document.createElement('tr');
-                    row.innerHTML = `
-                        <td>${recipe.recipe_ID}</td>
-                        <td>${recipe.recipe_name}</td>
-                        <td>${recipe.recipe_owner}</td>
-                        <td>${recipe.ingredients}</td>
-                        <td>${recipe.recipe_steps}</td>
-                        <td>${recipe.recipe_duration}</td>
-                        <td>${recipe.category}</td>
-                        <td>${recipe.created_on}</td>
-                    `;
+                    row.innerHTML = \`
+                        <td>\${recipe.recipe_ID}</td>
+                        <td>\${recipe.recipe_name}</td>
+                        <td>\${recipe.recipe_owner}</td>
+                        <td>\${recipe.ingredients}</td>
+                        <td>\${recipe.recipe_steps}</td>
+                        <td>\${recipe.recipe_duration}</td>
+                        <td>\${recipe.category}</td>
+                        <td>\${recipe.created_on}</td>
+                    \`;
                     tableBody.appendChild(row);
                 });
             })
@@ -67,3 +67,4 @@
     </script>
 </body>
 </html>
+`;
