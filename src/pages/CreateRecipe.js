@@ -12,7 +12,9 @@ const CreateRecipe = () => {
 
   return (
     <div className="create-recipe-container">
-      <h2>Submit a Recipe</h2>
+      <div className="pagename">
+        <h1>Share your tips</h1>
+      </div>
       <form
         className="recipeForm"
         onSubmit={handleSubmit}

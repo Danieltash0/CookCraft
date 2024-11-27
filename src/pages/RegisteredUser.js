@@ -1,5 +1,5 @@
 import React from 'react';
-import '../styles/home.css'; // Import the relevant CSS file
+import '../styles/registereduser.css'; // Import the relevant CSS file
 
 function RegisteredUser() {
   return (

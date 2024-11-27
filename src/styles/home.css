@@ -1,6 +1,6 @@
 body {
     font-family: Arial, sans-serif;
-    background-image: url('../assets/Beef-Stew-Ugali.jpg');
+    background-image: url('../../public/assets/Beef-Stew-Ugali.jpg');
     background-position: center;
     background-size: cover;
     height: 100%;
@@ -209,6 +209,7 @@ transform:scale(1.2);
   }
   .pagename h1{
     font-size: 40px;
+    color: orange;
     font-style: italic;
     font-family: 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     text-align: center;

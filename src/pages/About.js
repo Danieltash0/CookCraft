@@ -3,8 +3,10 @@ import '../styles/about.css';
 
 const About = () => {
   return (
-    <div>
-      
+    <div className='about-content'>
+      <div className="pagename">
+        <h1>Know more about us</h1>
+      </div>
       <main>
         <section>
           <h2>Our Mission</h2>
