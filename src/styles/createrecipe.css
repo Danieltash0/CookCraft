@@ -1,0 +1,124 @@
+
+
+.create-recipe-container {
+    font-family: Arial, sans-serif;
+    /*background-image: url('../assets/Beef-Stew-Ugali.jpg');*/
+    background-position: center;
+    background-size: cover;
+    height: 100%;
+    margin: 0;
+    padding: 20px;
+}
+
+h2 {
+    text-align: center;
+    color: orange;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    margin-bottom: 30px;
+}
+
+.recipeForm {
+    width: 40%;
+    margin: 0 auto;
+    padding: 30px;
+    border: 1px solid white;
+    border-radius: 10px;
+    box-shadow: 0 0 40px black;
+    color: white;
+    transition-duration: 0.5s;
+    backdrop-filter: blur(5px);
+}
+
+.recipeForm:hover {
+    background-color: white;
+    transition-duration: 0.5s;
+}
+.recipeForm:hover >label{
+    color: black;
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: white;
+}
+
+input[type="text"],
+input[type="number"],
+textarea,
+select {
+    width: 80%;
+    height: 30px;
+    display: flex;
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 1px solid grey;
+    border-radius: 5px;
+    background: rgba(255, 255, 255, 0.8);
+    color: black;
+}
+
+textarea {
+    height: auto;
+    min-height: 100px;
+    resize: vertical;
+}
+
+select {
+    height: 50px;
+    width: 85%;
+}
+
+input[type="file"] {
+    width: 85%;
+    padding: 10px 0;
+    color: black;
+}
+
+button[type="submit"] {
+    width: 30%;
+    height: 40px;
+    background-color: darkgreen;
+    color: #fff;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition-duration: 0.5s;
+    display: block;
+    margin: 20px auto 0;
+}
+
+button[type="submit"]:hover {
+    background-color: orange;
+    transition-duration: 0.5s;
+    transform: scale(1.1);
+    box-shadow: 0 0 10px black;
+}
+
+#successMessage {
+    color: green;
+    margin-top: 10px;
+    display: none;  
+}
+
+@media screen and (max-width: 768px) {
+    #recipeForm {
+        width: 80%;
+        padding: 20px;
+    }
+
+    input[type="text"],
+    input[type="number"],
+    textarea,
+    select {
+        width: 90%;
+    }
+
+    button[type="submit"] {
+        width: 50%;
+    }
+}
+
+

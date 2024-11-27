@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "../styles/createrecipe.css";
 
 const CreateRecipe = () => {
   const [success, setSuccess] = useState(false);

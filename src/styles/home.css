@@ -1,0 +1,229 @@
+body {
+    font-family: Arial, sans-serif;
+    background-image: url('../assets/Beef-Stew-Ugali.jpg');
+    background-position: center;
+    background-size: cover;
+    height: 100%;
+}
+.home-container {
+    font-family: Arial, sans-serif;
+    background-image: url('../../public/assets/homebckgrnd.jpg');
+    background-position: center;
+    background-size: cover;
+    height: 100%;
+}
+ 
+.home-content {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding: 5px;
+}
+
+.content h2{
+  color: white;
+  font-size: 35px;
+}
+
+.first{
+background-image: url('../../public/assets/homeback.jpg');
+background-size: cover;
+overflow: hidden;
+display: flex;
+flex-direction: column;
+align-items: center;
+text-align: center; 
+justify-content: center;
+}
+
+.first h2{
+  color: white;
+  backdrop-filter: blur(10px);
+}
+
+.button {
+  background-color: orange;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  text-decoration: none;
+  transition-duration: 0.5s;
+}
+
+.button:hover {
+  transition-duration: 0.5s;
+  transform: scale(1.2);
+  background-color: #154f17;
+  box-shadow: 0 0 10px black;
+}
+
+.categories {
+	display: flex;
+	justify-content: space-between;
+	flex-wrap: wrap;
+	margin-bottom: 50px;
+}
+
+.category {
+    width: 100%; 
+    margin: none; 
+    display: flex;
+    justify-content: center;
+}
+
+.category img {
+	width: 100%;
+  height: 100%;
+	margin-right: none;
+}
+
+.categorytext{
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50%;
+  color: white;
+  font-size: 40px;
+
+}
+.categorypic{
+  display: flex;
+  align-items: center;
+  width: 400px;
+	height: 400px;
+  width: 50%;
+  overflow: hidden;
+}
+
+.categorytext, .category img {
+  transition: transform 1s;
+}
+
+.categorytext:hover, .category img:hover {
+  transform: scale(1.2);
+  color: orange; 
+}
+
+.recipes {
+    overflow-x: auto; 
+    white-space: nowrap; 
+    display: flex;
+    flex-wrap: nowrap;
+    margin: 20px; 
+    width: 100%
+    
+  }
+  
+  .recipe {
+    margin: 10px;
+    width: 300px; 
+    height: 300px;
+    background-color: orange;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    display: inline-block; 
+    flex-grow: 1;
+    flex-shrink: 0;
+    overflow: hidden;
+  }
+
+  .recipepic {
+    height: 90%;
+  }
+
+  .recipetext{
+   height: 10%;
+  }
+.recipe img {
+	width: 100%;
+	height: 90%;
+	object-fit: cover;
+	border-radius: 10px 10px 0 0;
+  transition: 1s;
+}
+.recipe p{
+  height: 10%;
+}
+
+.recipe img:hover{
+transform:scale(1.2);
+}
+
+.tab-button{
+  background-color: #4CAF50;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition-duration: 0.5s;
+}
+.tab-button:hover{
+  color: white;
+  background-color: #154f17;
+}
+
+/* Style the popup container */
+.tab-content {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: none;
+}
+
+/* Style the popup content */
+.tab {
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  width: 300px;
+}
+
+/* Show the popup when the button is clicked */
+.tab-button:hover {
+  background-color: #154f17;
+}
+
+.tab-content.show {
+  display: block;
+}
+
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+.pagename{
+    padding-top: 20px;
+  }
+  .pagename h1{
+    font-size: 40px;
+    font-style: italic;
+    font-family: 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    text-align: center;
+  }
+
+.first{
+ width: 100%;
+ height: 500px;
+  }
+
+
+/* The Header Part */
+
+
+  
+  /* The Footer part */
+  
+  

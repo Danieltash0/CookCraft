@@ -1,5 +1,6 @@
 import React from "react";
- 
+import "../styles/home.css";
+import { Link } from 'react-router-dom';
 
 const Home = () => {
   return (
@@ -8,14 +9,14 @@ const Home = () => {
       <div className="pagename">
         <h1>Delicious Starts Here</h1>
       </div>
-
+        
       <div className="first">
         <h2>"Your Ultimate Recipe Hub, Where Every Dish Tells a Story!"</h2>
         <h2>Write Your Story Now</h2>
-        <p><a href="signup.html" className="button">Create a Recipe</a></p>
+        <p><Link to="/create-recipe" className="button">Create a Recipe</Link></p>
       </div>
 
-      <div className="content">
+      <div className="home-content">
         <h2>Recipe Categories</h2>
         <div className="categories">
           <div className="category">
