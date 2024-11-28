@@ -15,16 +15,14 @@ function Login() {
     try {
       const response = await axios.post('http://localhost:5000/login', { email, password });
 
-      // If login is successful, redirect with a token from the backend
       if (response.data.success) {
-        const token = response.data.token; // Token for authenticated requests
-        // Redirect to RegisteredUser with the token passed as part of the URL
-        navigate(`/RegisteredUser?token=${token}`);
+        const token = response.data.token; // Token received from backend
+        navigate(`/RegisteredUser?token=${token}`); // Redirect with token
       } else {
         setErrorMessage('Invalid email or password');
       }
     } catch (err) {
-      console.error('Error during login:', err);
+      console.error('Login error:', err);
       setErrorMessage('An error occurred. Please try again later.');
     }
   };

@@ -19,19 +19,19 @@ function SignUp() {
       return;
     }
 
-    setError('');
     try {
       const response = await axios.post('http://localhost:5000/signup', { username, email, password });
-
+      console.log(response.data);
+      
       if (response.data.success) {
-        const token = response.data.token; // Token for authenticated requests
-        navigate(`/RegisteredUser?token=${token}`);
+        const token = response.data.token; // Token received from backend
+        navigate(`/RegisteredUser?token=${token}`); // Redirect with token
       } else {
-        setError('Error creating account');
+        setError(response.data.message || 'Error creating account');
       }
     } catch (err) {
-      console.error(err.response?.data?.message || 'An error occurred');
-      setError(err.response?.data?.message || 'An error occurred');
+      console.error('Signup error:', err);
+      setError(err.response?.data?.message || 'An error occurred. Please try again later.');
     }
   };
 

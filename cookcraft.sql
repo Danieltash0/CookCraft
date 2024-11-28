@@ -16,10 +16,10 @@ CREATE TABLE recipe_table (
     recipeID INT AUTO_INCREMENT PRIMARY KEY,
     recipeName VARCHAR(255) NOT NULL,
     userID INT NOT NULL,
-    Duration INT NOT NULL, -- Duration in minutes
+    Duration INT NOT NULL, 
     categoryName VARCHAR(100),
-    recipeSteps TEXT NOT NULL, -- Steps to prepare the recipe
-    recipePic BLOB, -- Stores the image for the recipe
+    recipeSteps TEXT NOT NULL,
+    recipePic BLOB,
     Recipecreated_on DATETIME DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (userID) REFERENCES user_table(userID) ON DELETE CASCADE
 );
