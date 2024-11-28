@@ -56,7 +56,7 @@ const Home = () => {
         <h2>Some recipes you might be interested in</h2>
 
         <div className="recipes">
-          {/* Repeat recipe components as needed */}
+          
           {[...Array(8)].map((_, index) => (
             <div className="recipe" key={index}>
               <div className="recipepic">

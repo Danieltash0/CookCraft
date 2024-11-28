@@ -9,15 +9,15 @@ function Login() {
   const [errorMessage, setErrorMessage] = useState('');
   const navigate = useNavigate();
 
-  const handleSubmit = async (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
 
     try {
       const response = await axios.post('http://localhost:5000/login', { email, password });
 
       if (response.data.success) {
-        const token = response.data.token; // Token received from backend
-        navigate(`/RegisteredUser?token=${token}`); // Redirect with token
+        const token = response.data.token; 
+        navigate(`/RegisteredUser?token=${token}`);
       } else {
         setErrorMessage('Invalid email or password');
       }
@@ -34,7 +34,7 @@ function Login() {
       </div>
       <div className="content">
         <h1>Login to Your Account</h1>
-        <form id="login-form" onSubmit={handleSubmit}>
+        <form id="login-form" onSubmit={handleLogin}>
           <label htmlFor="email">Email:</label>
           <input
             type="email"

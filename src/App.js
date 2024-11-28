@@ -13,19 +13,19 @@ import RegisteredUser from './pages/RegisteredUser';
 function App() {
   return (
     <Router>
-      <Header />
-      <div className="main-content">
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/create-recipe" element={<CreateRecipe />} />
-          <Route path="/recipes" element={<Recipes />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/Signup" element={<SignUp />} />
-          <Route path="/RegisteredUser" element={<RegisteredUser />} />
-        </Routes>
-      </div>
-      <Footer /> 
+<Header />
+<div className="main-content">
+  <Routes>
+    <Route path="/" element={<Home />} />
+    <Route path="/about" element={<About />} />
+    <Route path="/create-recipe" element={<CreateRecipe />} />
+    <Route path="/recipes" element={<Recipes />} />
+    <Route path="/login" element={<Login />} />
+    <Route path="/Signup" element={<SignUp />} />
+    <Route path="/RegisteredUser" element={<RegisteredUser />} />
+  </Routes>
+</div>
+<Footer /> 
     </Router>
   );
 }

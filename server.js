@@ -2,14 +2,17 @@ const express = require('express');
 const mysql = require('mysql2');
 const cors = require('cors');
 const bodyParser = require('body-parser');
+const jwt = require('jsonwebtoken');
+const bcrypt = require('bcrypt'); 
 
 const app = express();
 const port = 5000;
+const SECRET_KEY = 'your_secret_key'; 
 
+app.use(express.json());
 app.use(cors());
-app.use(bodyParser.json()); // To parse JSON bodies
+app.use(bodyParser.json());
 
-// MySQL connection
 const db = mysql.createConnection({
   host: 'localhost',
   user: 'root',
@@ -21,47 +24,76 @@ db.connect((err) => {
   console.log('Connected to MySQL database');
 });
 
-// Route to handle sign-up
-app.post('/signup', (req, res) => {
+app.post('/signup', async (req, res) => {
   const { username, email, password } = req.body;
-  // Validate if all fields are provided
   if (!username || !email || !password) {
     return res.status(400).json({ message: 'All fields are required' });
   }
-  // Insert user into the database
-  const query = `INSERT INTO user_table (UserName, Email, Password) VALUES (?, ?, ?)`;
-  db.query(query, [username, email, password], (err, result) => {
-    if (err) {
-      return res.status(500).json({ message: 'Database error', error: err });
-    }
-    res.status(201).json({ message: 'User created successfully', userId: result.insertId });
-  });
+
+  try {
+    //const hashedPassword = await bcrypt.hash(password, 10);
+    const query = `INSERT INTO user_table (UserName, Email, Password) VALUES (?, ?, ?)`;
+    db.query(query, [username, email, hashedPassword], (err, result) => {
+      if (err) {
+        if (err.code === 'ER_DUP_ENTRY') {
+          return res.status(400).json({ message: 'Email already exists' });
+        }
+        return res.status(500).json({ message: 'Database error', error: err });
+      }
+      const token = jwt.sign({ userId: result.insertId }, SECRET_KEY, { expiresIn: '1h' });
+      res.status(201).json({ success: true, message: 'User created successfully', token });
+    });
+  } catch (error) {
+    res.status(500).json({ message: 'Server error', error });
+  }
 });
 
-// Route to handle login
+
 app.post('/login', (req, res) => {
   const { email, password } = req.body;
-  // Validate if email and password are provided
   if (!email || !password) {
     return res.status(400).json({ message: 'Email and password are required' });
   }
-  // Query to find the user by email
+
   const query = 'SELECT * FROM user_table WHERE Email = ?';
-  db.query(query, [email], (err, result) => {
+  db.query(query, [email], async (err, result) => {
     if (err) {
       return res.status(500).json({ message: 'Database error', error: err });
     }
-    if (result.length === 0 || result[0].Password !== password) {
+    if (result.length === 0) {
       return res.status(400).json({ message: 'Invalid email or password' });
     }
-    // Password matches, return success
-    res.status(200).json({ message: 'Login successful', userId: result[0].UserID });
+
+    const user = result[0];
+    const isPasswordValid = await bcrypt.compare(password, user.Password);
+    if (!isPasswordValid) {
+      return res.status(400).json({ message: 'Invalid email or password' });
+    }
+
+    const token = jwt.sign({ userId: user.UserID }, SECRET_KEY, { expiresIn: '1h' });
+    res.status(200).json({ success: true, message: 'Login successful', token });
   });
 });
 
-// Query to get user details for the user page
-app.get('/user/:userId', (req, res) => {
-  const { userId } = req.params;
+const authenticateToken = (req, res, next) => {
+  const authHeader = req.headers.authorization;
+  const token = authHeader && authHeader.split(' ')[1];
+
+  if (!token) {
+    return res.status(401).json({ message: 'Access denied' });
+  }
+
+  jwt.verify(token, SECRET_KEY, (err, user) => {
+    if (err) {
+      return res.status(403).json({ message: 'Invalid token' });
+    }
+    req.user = user; 
+    next();
+  });
+};
+
+app.get('/user', authenticateToken, (req, res) => {
+  const userId = req.user.userId;
   const query = 'SELECT UserName, AccountCreatedOn FROM user_table WHERE UserID = ?';
   db.query(query, [userId], (err, result) => {
     if (err) {
@@ -70,22 +102,22 @@ app.get('/user/:userId', (req, res) => {
     if (result.length === 0) {
       return res.status(404).json({ message: 'User not found' });
     }
-    res.status(200).json(result[0]);
+    res.status(200).json({ user: result[0] });
   });
 });
 
-// Query to fetch user recipes
-app.get('/recipes/user/:userId', (req, res) => {
-  const { userId } = req.params;
+app.get('/recipes', authenticateToken, (req, res) => {
+  const userId = req.user.userId;
   const query = 'SELECT recipeName, description FROM recipe_table WHERE UserID = ?';
   db.query(query, [userId], (err, result) => {
     if (err) {
       return res.status(500).json({ message: 'Database error', error: err });
     }
-    res.status(200).json(result);
+    res.status(200).json({ recipes: result });
   });
 });
 
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
 });
+

@@ -5,9 +5,9 @@ const CreateRecipe = () => {
   const [success, setSuccess] = useState(false);
 
   const handleSubmit = (event) => {
-    event.preventDefault(); // Prevent default form submission
-    setSuccess(true); // Display success message
-    // Add your form submission logic here, e.g., send data to API
+    event.preventDefault();
+    setSuccess(true);
+  
   };
 
   return (

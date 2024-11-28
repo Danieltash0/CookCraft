@@ -9,9 +9,10 @@ function SignUp() {
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [error, setError] = useState('');
+  const [successMessage, setSuccessMessage] = useState('');
   const navigate = useNavigate();
 
-  const handleSubmit = async (e) => {
+  const handleRegister = async (e) => {
     e.preventDefault();
 
     if (password !== confirmPassword) {
@@ -20,12 +21,18 @@ function SignUp() {
     }
 
     try {
-      const response = await axios.post('http://localhost:5000/signup', { username, email, password });
-      console.log(response.data);
-      
+      const response = await axios.post('http://localhost:5000/signup', {
+        username,
+        email,
+        password,
+      });
+
       if (response.data.success) {
-        const token = response.data.token; // Token received from backend
-        navigate(`/RegisteredUser?token=${token}`); // Redirect with token
+        const token = response.data.token; 
+        setSuccessMessage('Account created successfully! Redirecting...');
+        setTimeout(() => {
+          navigate(`/RegisteredUser?token=${token}`); 
+        }, 2000);
       } else {
         setError(response.data.message || 'Error creating account');
       }
@@ -36,50 +43,51 @@ function SignUp() {
   };
 
   return (
-    <div className="signup-page">
-      <div className="pagename">
-        <h1>Register and Create Your Own Recipes</h1>
-      </div>
-      <div className="content">
-        <h1>Create a CookCraft Account</h1>
-        {error && <div className="error">{error}</div>}
-        <form id="signup-form" onSubmit={handleSubmit}>
-          <label htmlFor="username">Create Username:</label>
-          <input
-            type="text"
-            id="username"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-            required
-          />
-          <label htmlFor="email">Email:</label>
-          <input
-            type="email"
-            id="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
-          <label htmlFor="password">Password:</label>
-          <input
-            type="password"
-            id="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-          <label htmlFor="confirm-password">Confirm Password:</label>
-          <input
-            type="password"
-            id="confirm-password"
-            value={confirmPassword}
-            onChange={(e) => setConfirmPassword(e.target.value)}
-            required
-          />
-          <button type="submit">Sign Up</button>
-          <p>Already have an account? <a href="/login">Login</a></p>
-        </form>
-      </div>
+<div className="signup-page">
+  <div className="pagename">
+    <h1>Register and Create Your Own Recipes</h1>
+  </div>
+  <div className="content">
+    <h1>Create a CookCraft Account</h1>
+    {error && <div className="error">{error}</div>}
+    {successMessage && <div className="success">{successMessage}</div>}
+    <form id="signup-form" onSubmit={handleRegister}>
+  <label htmlFor="username">Create Username:</label>
+  <input
+    type="text"
+    id="username"
+    value={username}
+    onChange={(e) => setUsername(e.target.value)}
+    required
+  />
+  <label htmlFor="email">Email:</label>
+  <input
+    type="email"
+    id="email"
+    value={email}
+    onChange={(e) => setEmail(e.target.value)}
+    required
+  />
+  <label htmlFor="password">Password:</label>
+  <input
+    type="password"
+    id="password"
+    value={password}
+    onChange={(e) => setPassword(e.target.value)}
+    required
+  />
+  <label htmlFor="confirm-password">Confirm Password:</label>
+  <input
+    type="password"
+    id="confirm-password"
+    value={confirmPassword}
+    onChange={(e) => setConfirmPassword(e.target.value)}
+    required
+  />
+  <button type="submit">Sign Up</button>
+  <p>Already have an account? <a href="/login">Login</a></p>
+</form>
+  </div>
     </div>
   );
 }
