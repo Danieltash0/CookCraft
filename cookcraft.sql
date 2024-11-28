@@ -1,10 +1,9 @@
--- Create the database
+--LAYOUT OF THE DATABASE
+
 CREATE DATABASE cookcraft;
 
--- Use the created database
 USE cookcraft;
 
--- Create the user_table
 CREATE TABLE user_table (
     userID INT AUTO_INCREMENT PRIMARY KEY,
     UserName VARCHAR(100) NOT NULL,
@@ -13,18 +12,18 @@ CREATE TABLE user_table (
     Accountcreated_on DATETIME DEFAULT CURRENT_TIMESTAMP
 );
 
--- Create the recipe_table
 CREATE TABLE recipe_table (
     recipeID INT AUTO_INCREMENT PRIMARY KEY,
     recipeName VARCHAR(255) NOT NULL,
     userID INT NOT NULL,
     Duration INT NOT NULL, -- Duration in minutes
     categoryName VARCHAR(100),
+    recipeSteps TEXT NOT NULL, -- Steps to prepare the recipe
+    recipePic BLOB, -- Stores the image for the recipe
     Recipecreated_on DATETIME DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (userID) REFERENCES user_table(userID) ON DELETE CASCADE
 );
 
--- Create the comments_table
 CREATE TABLE comments_table (
     commentID INT AUTO_INCREMENT PRIMARY KEY,
     recipeID INT NOT NULL,
@@ -34,7 +33,6 @@ CREATE TABLE comments_table (
     FOREIGN KEY (userID) REFERENCES user_table(userID) ON DELETE CASCADE
 );
 
--- Create the ingredients_table
 CREATE TABLE ingredients_table (
     ingredientID INT AUTO_INCREMENT PRIMARY KEY,
     ingredientName VARCHAR(255) NOT NULL,
